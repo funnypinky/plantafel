@@ -1,0 +1,71 @@
+<div class="modal-header">
+    <h1 class="modal-title fs-5" id="exampleModalLabel">Neuer Eintrag</h1>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body">
+    <form class="form-floating">
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <label for="nachname" class="form-label mb-0">Nachname</label>
+                <input type="text" class="form-control" id="nachname">
+            </div>
+            <div class="col-md-4">
+                <label for="vorname" class="form-label mb-0">Vorname</label>
+                <input type="text" class="form-control" id="vorname">
+            </div>
+            <div class="col-md-3">
+                <label for="dob" class="form-label mb-0">Geburtsdatum</label>
+                <input type="date" class="form-control" id="dob">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label for="ctInput" class="form-label mb-0">CT eingelesen</label>
+                <input type="date" class="form-control" id="ctInput">
+            </div>
+            <div class="col-md-4">
+                <label for="readingOwner" class="form-label mb-0">eingelesen von</label>
+                <input type="text" class="form-control" id="readingOwner" th:value="${username}">
+            </div>
+            <div class="col-md-3">
+                <label for="forDoc" class="form-label mb-0">für Arzt</label>
+                <input type="" class="form-control" id="forDoc">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="entity" class="form-label mb-0">Region/Entity</label>
+                <select class="form-select" id="entity">
+                    <option th:each="item : ${entities}" th:value="${item.id}" th:text="${item.name}"></option>
+                </select>
+            </div>
+            <div class="col-md-5">
+                <label for="entitySide" class="form-label mb-0">Lage</label>
+                <input type="text" class="form-control" id="entitySide">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="firstTreat" class="form-label mb-0">Neueinstellung</label>
+                <input type="date" class="form-control" id="firstTreat">
+            </div>
+            <div class="col-md-5">
+                <label for="machine" class="form-label mb-0">Gerät</label>
+                <input type="text" class="form-control" id="machine">
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
+    <button type="button" class="btn btn-primary">Speichern</button>
+</div>
+<script>
+    $(function () {
+        var now = new Date();
+        var day = ("0" + now.getDate()).slice(-2);
+        var month = ("0" + (now.getMonth() + 1)).slice(-2);
+        var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
+        $('#ctInput').val(today);
+    });
+</script>
