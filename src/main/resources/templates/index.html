@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <link th:rel="stylesheet" th:href="@{/css/main.css}"/>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/jquery-ui/jquery-ui.min.js}"></script>
+    <title></title>
+</head>
+<body>
+
+<nav class="container-fluid custom-navbar">
+    <div class="row">
+        <div class="col-3 p-3">
+            <h1 class="navbar-brand">Plantafel</h1>
+        </div>
+        <div class="col-sm-3 p-3 ms-auto">
+            <form class="">
+                <div class="input-group">
+                    <button class="btn btn-primary">Suchen</button>
+                    <input type="text" class="form-control">
+                </div>
+            </form>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="/modals/modal1">Einlesen</button>
+            <button type="button" class="btn btn-outline-primary" disabled>Ausgeben</button>
+            <button type="button" class="btn btn-outline-primary" disabled>Kontrolle</button>
+            <button type="button" class="btn btn-outline-primary" disabled>Verifikation</button>
+        </div>
+    </div>
+
+</nav>
+<!-- Modal -->
+<div class="modal modal-lg fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" id="layer">
+
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid p-0 table-responsive">
+    <table class="table align-middle">
+        <thead class="table-header">
+        <tr>
+            <td rowspan="2">Name</td>
+            <td rowspan="2">Vorname</td>
+            <td rowspan="2">DoB</td>
+            <td colspan="3" class="text-center">CT eingelesen</td>
+            <td colspan="2" class="text-center">Region/Tumorenität</td>
+            <td colspan="2" class="text-center">Planung</td>
+            <td colspan="5" class="text-center">Technik</td>
+            <td colspan="2" class="text-center">Verifikation</td>
+            <td colspan="3" class="text-center">Ausgabe/Kontrolle</td>
+            <td rowspan="2">Bemerkung</td>
+        </tr>
+        <tr>
+            <td>am</td>
+            <td>von</td>
+            <td>Arzt</td>
+            <td>Region/Enität</td>
+            <td>Seite</td>
+            <td>Datum</td>
+            <td>Gerät</td>
+            <td>Energie</td>
+            <td>Feldanzahl</td>
+            <td>Technik</td>
+            <td>VRT</td>
+            <td>AG</td>
+            <td>erstellt</td>
+            <td>ausgewertet</td>
+            <td>Datum</td>
+            <td>1. Phy.</td>
+            <td>2. Phy.</td>
+        </tr>
+        </thead>
+        <tbody class="table-group-divider">
+
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+<script>
+    const exampleModal = document.getElementById('exampleModal')
+    if (exampleModal) {
+        exampleModal.addEventListener('show.bs.modal', event => {
+            // Button that triggered the modal
+            const button = event.relatedTarget
+            // Extract info from data-bs-* attributes
+            const link = button.getAttribute('data-bs-whatever')
+            $( "#layer" ).load( link );
+        })
+    }
+</script>
+</html>

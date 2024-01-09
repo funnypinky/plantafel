@@ -1,0 +1,46 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.0'
+	id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'org.funnypinky'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '19'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:3.1.2'
+	implementation 'org.springframework.boot:spring-boot-starter-web:3.1.4'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:3.1.4'
+	implementation 'joda-time:joda-time:2.12.5'
+	implementation 'org.webjars:bootstrap:5.3.0'
+	implementation 'org.webjars:jquery:3.6.4'
+	implementation 'org.webjars:jquery-ui:1.13.2'
+	implementation 'org.webjars:webjars-locator:0.47'
+	implementation 'com.h2database:h2:2.1.214'
+	compileOnly 'org.projectlombok:lombok:1.18.30'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools:3.1.4'
+	annotationProcessor 'org.projectlombok:lombok:1.18.28'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test:3.1.4'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+tasks.named('bootJar') {
+	launchScript();
+}
