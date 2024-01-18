@@ -1,5 +1,6 @@
 package org.funnypinky.planTableElectron.Controller;
 
+import org.funnypinky.planTableElectron.Helper;
 import org.funnypinky.planTableElectron.Service.EntityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +21,11 @@ public class ModalController {
     @GetMapping("modal1")
     public String modal1(Model model) {
         model.addAttribute("entities",entityService.findAll());
-        model.addAttribute("username",System.getenv("USER"));
+        if(System.getProperty("os.name").contains("Windows")) {
+            model.addAttribute("username", Helper.userName());
+        } else {
+            model.addAttribute("username", System.getenv("USER"));
+        }
         Map<String, String> env =  System.getenv();
         System.out.println(env);
         return "modal1";
